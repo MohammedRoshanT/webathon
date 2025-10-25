@@ -237,6 +237,49 @@ const scholarships = [
         residency: "Resident",
         description: "The scheme is a merit-cum-means scholarship scheme implemented by the Ministry of Education (Dept of Higher Education) to provide financial assistance to meritorious students from low-income families to help meet a part of their day-to-day expenses while pursuing higher studies (regular full-time courses)",
         applyUrl: "https://scholarships.gov.in"
+    },
+    {
+        name: "Post-Matric Scholarship Scheme for Minorities",
+        amount: "10,000 p.a.",
+        field: "STEM",
+        minGPA:5.0,
+        maxAge: "None",
+        maxIncome: 200000,
+        residency: "Resident",
+        description: "A central sector scheme aimed at providing financial assistance to meritorious students from minority communities (economically weaker sections) so as to enhance their access to and continuation in higher education and improve employability.",
+        applyUrl: "https://scholarships.gov.in"
+    },
+    {
+        name: "National Fellowship and Scholarship for Higher Education of ST Students (NFST)",
+       amount: "31,000 to 35,000",
+       field:"STEM",
+       minGPA: 7,
+       maxAge: 36,
+       maxIncome:600000,
+       residency:"Resident",
+       description:"This is a Central Sector Scheme which merges two earlier schemes (Rajiv Gandhi National Fellowship and Top Class Education for ST Students) for ST students" ,
+       applyUrl:"https://fellowship.tribal.gov.in/"
+    },
+    {
+        name: "INSPIRE Scholarship for Higher Education (SHE)",
+        amount:80000,
+        field:"STEM",
+        minGPA:7.0,
+        maxAge:22,
+        maxIncome:"None",
+        residency:" Resident",
+        description:"A scheme under the Ministry of Science & Technology / Department of Science & Technology (DST), Government of India, aiming to attract and retain talented students in the natural/basic sciences by providing them scholarship support, mentorship, summer research projects and exposure",
+        applyUrl: "https://www.online-inspire.gov.in"
+    },
+    {
+        name:"AICTE Pragati Scholarship (for girls) / AICTE Saksham Scholarship (for specially-abled)",
+        amount: 50000,
+        field:"STEM",
+        minGPA:"None",
+        maxIncome: 800000,
+        residency:"Resident",
+        description:"Pragati—Designed to support and encourage female students to pursue technical education (degree/diploma) in AICTE-approved institutions by providing financial assistance for tuition, books, computer, software, etc",
+        applyUrl:" https://www.aicte-pragati-saksham-gov.in/"
     }
 
 
