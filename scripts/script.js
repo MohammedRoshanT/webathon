@@ -1,6 +1,5 @@
-// Simple navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Add active class to current page
+
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav a');
     
@@ -10,189 +9,240 @@ document.addEventListener('DOMContentLoaded', function() {
             link.style.backgroundColor = '#357abd';
         }
     });
+
     
-    // Scholarship form functionality
-    initScholarshipForm();
+    const scholarshipForm = document.getElementById('scholarshipFilterForm');
+    if (scholarshipForm) {
+        scholarshipForm.addEventListener('submit', handleScholarshipFilter);
+    }
 });
 
-// Scholarship form functionality
-function initScholarshipForm() {
-    const form = document.getElementById('scholarshipFilterForm');
-    const resultsContainer = document.getElementById('scholarshipResults');
-    
-    if (!form || !resultsContainer) return;
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(form);
-        const age = parseInt(formData.get('age'));
-        const income = parseInt(formData.get('income'));
-        const studyField = formData.get('studyField');
-        const gpa = parseFloat(formData.get('gpa'));
-        const residency = formData.get('residency');
-        
-        // Filter scholarships based on criteria
-        const filteredScholarships = filterScholarships(age, income, studyField, gpa, residency);
-        
-        // Display results
-        displayResults(filteredScholarships);
-    });
-}
 
-// Sample scholarship data
 const scholarships = [
     {
         name: "STEM Excellence Scholarship",
         amount: "$5,000",
-        requirements: {
-            minGPA: 3.5,
-            fields: ["STEM"],
-            maxIncome: 80000,
-            minAge: 16,
-            maxAge: 25
-        },
-        description: "For students pursuing STEM fields with strong academic performance."
+        field: "STEM",
+        minGPA: 7.5,
+        maxAge: 25,
+        maxIncome: 75000,
+        residency: "Resident",
+        description: "For students pursuing STEM fields with strong academic performance.",
+        applyUrl: "https://www.stemscholarship.org/apply"
     },
     {
-        name: "Merit-Based Achievement Award",
+        name: "Arts & Humanities Grant",
         amount: "$3,000",
-        requirements: {
-            minGPA: 3.8,
-            fields: ["STEM", "Arts", "Business", "Healthcare", "Education"],
-            maxIncome: 100000,
-            minAge: 17,
-            maxAge: 30
-        },
-        description: "High-achieving students across all fields of study."
-    },
-    {
-        name: "Need-Based Support Grant",
-        amount: "$4,000",
-        requirements: {
-            minGPA: 2.5,
-            fields: ["STEM", "Arts", "Business", "Healthcare", "Education"],
-            maxIncome: 50000,
-            minAge: 16,
-            maxAge: 35
-        },
-        description: "For students with financial need and academic potential."
-    },
-    {
-        name: "Arts & Humanities Scholarship",
-        amount: "$2,500",
-        requirements: {
-            minGPA: 3.0,
-            fields: ["Arts"],
-            maxIncome: 75000,
-            minAge: 16,
-            maxAge: 28
-        },
-        description: "Supporting students in arts and humanities programs."
+        field: "Arts",
+        minGPA: 8.0,
+        maxAge: 30,
+        maxIncome: 60000,
+        residency: "Resident",
+        description: "Supporting students in arts and humanities programs.",
+        applyUrl: "https://www.artsfoundation.org/grants"
     },
     {
         name: "Business Leadership Award",
-        amount: "$3,500",
-        requirements: {
-            minGPA: 3.2,
-            fields: ["Business"],
-            maxIncome: 90000,
-            minAge: 18,
-            maxAge: 32
-        },
-        description: "For future business leaders and entrepreneurs."
+        amount: "$4,500",
+        field: "Business",
+        minGPA: 6.2,
+        maxAge: 28,
+        maxIncome: 80000,
+        residency: "Non-Resident",
+        description: "For future business leaders with entrepreneurial spirit.",
+        applyUrl: "https://www.scholarshipsfund.org/business-leaders-scholarship/"
     },
     {
         name: "Healthcare Heroes Scholarship",
-        amount: "$4,500",
-        requirements: {
-            minGPA: 3.3,
-            fields: ["Healthcare"],
-            maxIncome: 85000,
-            minAge: 17,
-            maxAge: 30
-        },
-        description: "Supporting students pursuing healthcare careers."
+        amount: "$6,000",
+        field: "Healthcare",
+        minGPA: 7.7,
+        maxAge: 35,
+        maxIncome: 70000,
+        residency: "Resident",
+        description: "Supporting students committed to healthcare careers.",
+        applyUrl: "https://www.scholarships.com/scholarships/the-procare-health-heroes-scholarship"
     },
     {
-        name: "Education Excellence Grant",
-        amount: "$2,800",
-        requirements: {
-            minGPA: 3.1,
-            fields: ["Education"],
-            maxIncome: 70000,
-            minAge: 18,
-            maxAge: 35
-        },
-        description: "For students committed to education and teaching."
-    }
+        name: "Education Impact Fund",
+        amount: "$2,500",
+        field: "Education",
+        minGPA: 7.3,
+        maxAge: 40,
+        maxIncome: 50000,
+        residency: "Resident",
+        description: "For students dedicated to making a difference in education.",
+        applyUrl: "https://www.educationimpactfund.org/"
+    },
+    {
+        name: "International Student Grant",
+        amount: "$4,000",
+        field: "STEM",
+        minGPA: 7.4,
+        maxAge: 30,
+        maxIncome: 90000,
+        residency: "Non-Resident",
+        description: "Supporting international students in STEM programs.",
+        applyUrl: "https://www.internationalscholarships.com/"
+    },
+    {
+        name: "Community Service Scholarship",
+        amount: "$3,500",
+        field: "Education",
+        minGPA: 8.0,
+        maxAge: 25,
+        maxIncome: 45000,
+        residency: "Resident",
+        description: "For students with strong community service backgrounds.",
+        applyUrl: "https://www.scholarships.com/"
+    },
+    {
+        name: "Innovation in Technology Award",
+        amount: "$7,500",
+        field: "STEM",
+        minGPA: 7.6,
+        maxAge: 35,
+        maxIncome: 100000,
+        residency: "Non-Resident",
+        description: "Recognizing exceptional talent in technology and innovation.",
+        applyUrl: "https://awards.gov.in/"
+    },
+    {
+        name: "Fulbright Program (USA)",
+        amount: "$4000",
+        field: "STEM",
+        minGPA: 8.0,
+        maxAge: 35,
+        maxIncome: 120000,
+        residency: "Non-Resident",
+        description: "Prestigious U.S. government grant for Master's/PhD students from 155+ countries, covering all costs.",
+        applyUrl: "https://foreign.fulbrightonline.org/"
+    },
+    {
+        name: "Chevening Scholarships (UK)",
+        amount: "$40000",
+        field: "STEM",
+        minGPA: 7.5,
+        maxAge: 35,
+        maxIncome: 100000,
+        residency: "Non-Resident",
+        description: "UK government's fully-funded scholarship for one-year Master's degrees, focusing on leadership potential.",
+        applyUrl: "https://www.chevening.org/apply/"
+    },
+    {
+        name: "DAAD Scholarships (Germany)",
+        amount: "€934 - €1,300",
+        field: "STEM",
+        minGPA: 7.0, 
+        maxAge: 35,
+        maxIncome: 100000,
+        residency: "Non-Resident",
+        description: "German government funding for Master's/PhD students, including a monthly stipend and health insurance.",
+        applyUrl: "https://www.daad.de/en/"
+    },
+    {
+        name: "Erasmus Mundus Joint Master Degrees (EU)",
+        amount: "$65000",
+        field: "Arts",
+        minGPA: 8.0, 
+        maxAge: 35,
+        maxIncome: 100000,
+        residency: "Non-Resident",
+        description: "European Commission grant for a joint Master's degree across multiple European universities.",
+        applyUrl: "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-degrees"
+    },
+    
+
+
 ];
 
-// Filter scholarships based on user criteria
-function filterScholarships(age, income, studyField, gpa, residency) {
+
+function handleScholarshipFilter(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const userCriteria = {
+        age: parseInt(formData.get('age')),
+        income: parseInt(formData.get('income')),
+        studyField: formData.get('studyField'),
+        gpa: parseFloat(formData.get('gpa')),
+        residency: formData.get('residency')
+    };
+    
+    const matchingScholarships = findMatchingScholarships(userCriteria);
+    displayScholarshipResults(matchingScholarships);
+}
+
+
+function findMatchingScholarships(criteria) {
+    console.log('User criteria:', criteria); // Debug log
+    
     return scholarships.filter(scholarship => {
-        const req = scholarship.requirements;
+        console.log('Checking scholarship:', scholarship.name); // Debug log
         
-        // Check age range
-        if (age < req.minAge || age > req.maxAge) return false;
+        // Check age requirement
+        if (criteria.age > scholarship.maxAge) {
+            console.log(`Age ${criteria.age} > ${scholarship.maxAge} - REJECTED`);
+            return false;
+        }
         
-        // Check income limit
-        if (income > req.maxIncome) return false;
-        
-        // Check GPA requirement
-        if (gpa < req.minGPA) return false;
+        // Check income requirement
+        if (criteria.income > scholarship.maxIncome) {
+            console.log(`Income ${criteria.income} > ${scholarship.maxIncome} - REJECTED`);
+            return false;
+        }
         
         // Check field of study
-        if (!req.fields.includes(studyField)) return false;
+        if (scholarship.field !== criteria.studyField) {
+            console.log(`Field ${scholarship.field} !== ${criteria.studyField} - REJECTED`);
+            return false;
+        }
         
+        // Check GPA requirement
+        if (criteria.gpa < scholarship.minGPA) {
+            console.log(`GPA ${criteria.gpa} < ${scholarship.minGPA} - REJECTED`);
+            return false;
+        }
+        
+        // Check residency requirement
+        if (scholarship.residency !== criteria.residency) {
+            console.log(`Residency ${scholarship.residency} !== ${criteria.residency} - REJECTED`);
+            return false;
+        }
+        
+        console.log('✅ MATCHED:', scholarship.name);
         return true;
     });
 }
 
-// Display filtered results
-function displayResults(scholarships) {
+
+function displayScholarshipResults(scholarships) {
     const resultsContainer = document.getElementById('scholarshipResults');
     
     if (scholarships.length === 0) {
         resultsContainer.innerHTML = `
-            <div class="no-results">
+            <div class="placeholder">
                 <h3>No matching scholarships found</h3>
-                <p>Try adjusting your criteria or check back later for new opportunities.</p>
+                <p>Try adjusting your criteria to see more results.</p>
             </div>
         `;
         return;
     }
     
-    let html = '<div class="scholarship-grid">';
-    
-    scholarships.forEach(scholarship => {
-        html += `
-            <div class="scholarship-card">
-                <h3>${scholarship.name}</h3>
-                <div class="amount">${scholarship.amount}</div>
-                <p class="description">${scholarship.description}</p>
-                <div class="requirements">
-                    <h4>Requirements:</h4>
-                    <ul>
-                        <li>Minimum GPA: ${scholarship.requirements.minGPA}</li>
-                        <li>Maximum Income: $${scholarship.requirements.maxIncome.toLocaleString()}</li>
-                        <li>Age Range: ${scholarship.requirements.minAge}-${scholarship.requirements.maxAge} years</li>
-                        <li>Fields: ${scholarship.requirements.fields.join(', ')}</li>
-                    </ul>
-                </div>
-                <button class="apply-btn">Apply Now</button>
+    const scholarshipsHTML = scholarships.map(scholarship => `
+        <div class="scholarship-card">
+            <h3>${scholarship.name}</h3>
+            <p><strong>Amount:</strong> ${scholarship.amount}</p>
+            <p><strong>Field:</strong> ${scholarship.field}</p>
+            <p><strong>Description:</strong> ${scholarship.description}</p>
+            <div class="criteria">
+                <strong>Requirements:</strong> GPA ≥ ${scholarship.minGPA}, Age ≤ ${scholarship.maxAge}, Income ≤ $${scholarship.maxIncome.toLocaleString()}, ${scholarship.residency}
             </div>
-        `;
-    });
+            <div class="scholarship-actions">
+                <a href="${scholarship.applyUrl}" target="_blank" class="btn-apply-now">Apply Now</a>
+            </div>
+        </div>
+    `).join('');
     
-    html += '</div>';
-    resultsContainer.innerHTML = html;
-    
-    // Add click handlers for apply buttons
-    document.querySelectorAll('.apply-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            alert('Application process would open here!');
-        });
-    });
+    resultsContainer.innerHTML = scholarshipsHTML;
 }

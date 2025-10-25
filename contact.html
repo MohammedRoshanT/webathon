@@ -1,36 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Finder - Contact</title>
-    <link rel="stylesheet" href="./styles/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Pylon- Contact</title>
+<link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-   <div class="header">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="./images/logo.png" alt="logo" width="60" height="60">
-                </a>
-                <h2>Pylon</h2>
-            </div>
+ <div class="header">
+ <div class="logo">
+ <a href="index.html">
+<img src="./images/logo.png" alt="logo">
+ </a>
+ <h2>Pylon</h2>
+ </div>
+ <nav class="nav">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="scholarship.html">Scholarships</a></li>
+ <li><a href="contact.html">Contact</a></li>
+ </ul>
+  </nav>
+ </div>
+
+      <main class="contact-page-layout">
+        
+        <div class="contact-form-container">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us for any questions or support.</p>
             
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="scholarship.html">Scholarships</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+            <form id="contact-form" >
+                
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                
+                <p id="status-message"></p>
 
+                <button type="submit" id="contactSubmitBtn">Send Message</button>
 
-    <main>
-        <h2>Contact Us</h2>
-        <p>Get in touch with us for any questions or support.</p>
-        <!-- Add contact form here -->
-    </main>
+            </form>
+             </div>
+ </main>
 
-    <script src="./scripts/script.js"></script>
-</body>
-</html>
+ <footer>
+     <div class="footer-content">
+         <div class="footer-section">
+             <h3>Pylon</h3>
+             <p>Your trusted partner in finding the right scholarships for your educational journey.</p>
+         </div>
+         <div class="footer-section">
+             <h4>Quick Links</h4>
+             <ul>
+                 <li><a href="index.html">Home</a></li>
+                 <li><a href="scholarship.html">Scholarships</a></li>
+                 <li><a href="contact.html">Contact</a></li>
+             </ul>
+         </div>
+         <div class="footer-section">
+             <h4>Contact Info</h4>
+             <p>Email: info@pylon.com</p>
+             <p>Phone: +91 123456789</p>
+         </div>
+     </div>
+     <div class="footer-bottom">
+         <p>&copy; 2025 Pylon. All rights reserved.</p>
+     </div>
+ </footer>
+
+ <script src="./scripts/script.js"></script>
+ </body>
+ </html>
