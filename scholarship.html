@@ -5,29 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Finder - Search</title>
     <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/scholarship.css">
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <a href="index.html">
-                <img src="./images/download1.png" alt="logo" width="50" height="50">
-            </a>
-            <h1>Scholarship Finder</h1>
+   <div class="header">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./images/logo.png" alt="logo" width="60" height="60">
+                </a>
+                <h2>Pylon</h2>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="scholarship.html">Scholarships</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-        
-        <nav class="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="scholarship.html">Scholarships</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
+
 
     <main>
-        <h2>Scholarship Search</h2>
-        <p>Search for scholarships that match your criteria.</p>
-        <!-- Add scholarship search functionality here -->
+        <section class="filter-form-container">
+            <h2>Your Eligibility Details</h2>
+            <form id="scholarshipFilterForm">
+                
+                <div class="form-group">
+                    <label for="age">Age (Years):</label>
+                    <input type="number" id="age" name="age" min="16" max="60" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="income">Annual Household Income ($):</label>
+                    <input type="number" id="income" name="income" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studyField">Intended Field of Study:</label>
+                    <select id="studyField" name="studyField" required>
+                        <option value="">-- Select Field --</option>
+                        <option value="STEM">Science, Tech, Engineering, Math (STEM)</option>
+                        <option value="Arts">Arts & Humanities</option>
+                        <option value="Business">Business & Finance</option>
+                        <option value="Healthcare">Healthcare & Medicine</option>
+                        <option value="Education">Education & Social Sciences</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="gpa">GPA (e.g., 3.5 on a 4.0 scale):</label>
+                    <input type="number" id="gpa" name="gpa" step="0.01" min="0.0" max="4.0" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Residency Status:</label>
+                    <div>
+                        <input type="radio" id="resident" name="residency" value="Resident" required>
+                        <label for="resident">In-State Resident</label>
+                        <input type="radio" id="nonResident" name="residency" value="Non-Resident">
+                        <label for="nonResident">Out-of-State/International</label>
+                    </div>
+                </div>
+
+                <button type="submit" id="filterButton">Filter Scholarships</button>
+            </form>
+        </section>
+
+        <section class="results-container">
+            <h2>Filtered Scholarships</h2>
+            <div id="scholarshipResults">
+                <p class="placeholder">Fill out the form and click "Filter Scholarships" to see your matches.</p>
+            </div>
+        </section>
     </main>
 
     <script src="./scripts/script.js"></script>
