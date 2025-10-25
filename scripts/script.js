@@ -1,8 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Enhanced navbar functionality
+document.addEventListener('DOMContentLoaded', function () {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav a');
-    
+
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
@@ -11,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Add scroll effect to header
+    
     const header = document.querySelector('.header');
     if (header) {
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 50) {
                 header.style.background = 'linear-gradient(135deg, rgba(0, 127, 254, 0.95) 0%, rgba(0, 86, 179, 0.95) 100%)';
                 header.style.backdropFilter = 'blur(20px)';
@@ -24,26 +23,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
-    // Enhanced scholarship form functionality
+
+ 
     const scholarshipForm = document.getElementById('scholarshipFilterForm');
     if (scholarshipForm) {
-        scholarshipForm.addEventListener('submit', function(e) {
+        scholarshipForm.addEventListener('submit', function (e) {
             e.preventDefault();
             showLoadingState();
-            
+
             setTimeout(() => {
                 handleScholarshipFilter(e);
                 hideLoadingState();
             }, 800);
         });
     }
+
     
-    // Add page transition effects
     initPageTransitions();
 });
 
-// Show loading state
+
 function showLoadingState() {
     const resultsContainer = document.getElementById('scholarshipResults');
     if (resultsContainer) {
@@ -56,7 +55,7 @@ function showLoadingState() {
     }
 }
 
-// Hide loading state
+
 function hideLoadingState() {
     const loadingContainer = document.querySelector('.loading-container');
     if (loadingContainer) {
@@ -67,25 +66,25 @@ function hideLoadingState() {
     }
 }
 
-// Page transition effects
+
 function initPageTransitions() {
     const main = document.querySelector('main');
     if (main) {
         main.style.opacity = '0';
         main.style.transform = 'translateY(20px)';
-        
+
         setTimeout(() => {
             main.style.transition = 'all 0.6s ease';
             main.style.opacity = '1';
             main.style.transform = 'translateY(0)';
         }, 100);
     }
-    
+
     const aboutSections = document.querySelectorAll('.about-section');
     aboutSections.forEach((section, index) => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
-        
+
         setTimeout(() => {
             section.style.transition = 'all 0.6s ease';
             section.style.opacity = '1';
@@ -210,7 +209,7 @@ const scholarships = [
         name: "DAAD Scholarships (Germany)",
         amount: "€934 - €1,300",
         field: "STEM",
-        minGPA: 7.0, 
+        minGPA: 7.0,
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
@@ -221,14 +220,25 @@ const scholarships = [
         name: "Erasmus Mundus Joint Master Degrees (EU)",
         amount: "$65000",
         field: "Arts",
-        minGPA: 8.0, 
+        minGPA: 8.0,
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
         description: "European Commission grant for a joint Master's degree across multiple European universities.",
         applyUrl: "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-degrees"
     },
-    
+    {
+        name: "Central Sector Scheme of Scholarships for College and University Students(CSSS)",
+        amount: " ₹10,000–₹20,000/year",
+        field: "STEM",
+        minGPA: 7.0,
+        maxAge: 35,
+        maxIncome:450000,
+        residency: "Resident",
+        description: "The scheme is a merit-cum-means scholarship scheme implemented by the Ministry of Education (Dept of Higher Education) to provide financial assistance to meritorious students from low-income families to help meet a part of their day-to-day expenses while pursuing higher studies (regular full-time courses)",
+        applyUrl: "https://scholarships.gov.in"
+    }
+
 
 
 ];
@@ -236,7 +246,7 @@ const scholarships = [
 
 function handleScholarshipFilter(event) {
     event.preventDefault();
-    
+
     const formData = new FormData(event.target);
     const userCriteria = {
         age: parseInt(formData.get('age')),
@@ -245,48 +255,48 @@ function handleScholarshipFilter(event) {
         gpa: parseFloat(formData.get('gpa')),
         residency: formData.get('residency')
     };
-    
+
     const matchingScholarships = findMatchingScholarships(userCriteria);
     displayScholarshipResults(matchingScholarships);
 }
 
 
 function findMatchingScholarships(criteria) {
-    console.log('User criteria:', criteria); // Debug log
-    
+    console.log('User criteria:', criteria); 
+
     return scholarships.filter(scholarship => {
-        console.log('Checking scholarship:', scholarship.name); // Debug log
-        
-        // Check age requirement
+        console.log('Checking scholarship:', scholarship.name);
+
+     
         if (criteria.age > scholarship.maxAge) {
             console.log(`Age ${criteria.age} > ${scholarship.maxAge} - REJECTED`);
             return false;
         }
+
         
-        // Check income requirement
         if (criteria.income > scholarship.maxIncome) {
             console.log(`Income ${criteria.income} > ${scholarship.maxIncome} - REJECTED`);
             return false;
         }
+
         
-        // Check field of study
         if (scholarship.field !== criteria.studyField) {
             console.log(`Field ${scholarship.field} !== ${criteria.studyField} - REJECTED`);
             return false;
         }
-        
-        // Check GPA requirement
+
+       
         if (criteria.gpa < scholarship.minGPA) {
             console.log(`GPA ${criteria.gpa} < ${scholarship.minGPA} - REJECTED`);
             return false;
         }
+
         
-        // Check residency requirement
         if (scholarship.residency !== criteria.residency) {
             console.log(`Residency ${scholarship.residency} !== ${criteria.residency} - REJECTED`);
             return false;
         }
-        
+
         console.log('✅ MATCHED:', scholarship.name);
         return true;
     });
@@ -295,7 +305,7 @@ function findMatchingScholarships(criteria) {
 
 function displayScholarshipResults(scholarships) {
     const resultsContainer = document.getElementById('scholarshipResults');
-    
+
     if (scholarships.length === 0) {
         resultsContainer.innerHTML = `
             <div class="placeholder">
@@ -305,7 +315,7 @@ function displayScholarshipResults(scholarships) {
         `;
         return;
     }
-    
+
     const scholarshipsHTML = scholarships.map(scholarship => `
         <div class="scholarship-card">
             <h3>${scholarship.name}</h3>
@@ -320,6 +330,6 @@ function displayScholarshipResults(scholarships) {
             </div>
         </div>
     `).join('');
-    
+
     resultsContainer.innerHTML = scholarshipsHTML;
 }

@@ -495,6 +495,16 @@ footer {
     padding: 60px 20px;
 }
 
+.subjects-section h2 {
+   color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
 .subjects-container {
     display: flex;
     justify-content: center;
@@ -633,7 +643,7 @@ textarea:focus {
     cursor: pointer;
 }
 
-/* About Page Styles */
+
 .about-container {
     max-width: 900px;
     margin: 60px auto;
@@ -699,10 +709,7 @@ textarea:focus {
     gap: 15px;
 }
 
-.about-section h2::before {
-    content: '✨';
-    font-size: 1.2rem;
-}
+
 
 .about-section p {
     line-height: 1.8;
@@ -755,7 +762,7 @@ textarea:focus {
     box-shadow: 0 4px 12px rgba(0, 127, 254, 0.3);
 }
 
-/* Mobile Responsive for About Page */
+
 @media (max-width: 768px) {
     .about-container {
         margin: 20px auto;
