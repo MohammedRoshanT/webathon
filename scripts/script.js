@@ -1,21 +1,98 @@
 document.addEventListener('DOMContentLoaded', function() {
-
+    // Enhanced navbar functionality
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.nav a');
     
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (href === currentPage) {
-            link.style.backgroundColor = '#357abd';
+            link.style.backgroundColor = 'rgba(197, 158, 2, 0.9)';
+            link.style.transform = 'translateY(-2px)';
         }
     });
 
+    // Add scroll effect to header
+    const header = document.querySelector('.header');
+    if (header) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                header.style.background = 'linear-gradient(135deg, rgba(0, 127, 254, 0.95) 0%, rgba(0, 86, 179, 0.95) 100%)';
+                header.style.backdropFilter = 'blur(20px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--header-bg) 0%, #0056b3 100%)';
+                header.style.backdropFilter = 'blur(10px)';
+            }
+        });
+    }
     
+    // Enhanced scholarship form functionality
     const scholarshipForm = document.getElementById('scholarshipFilterForm');
     if (scholarshipForm) {
-        scholarshipForm.addEventListener('submit', handleScholarshipFilter);
+        scholarshipForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            showLoadingState();
+            
+            setTimeout(() => {
+                handleScholarshipFilter(e);
+                hideLoadingState();
+            }, 800);
+        });
     }
+    
+    // Add page transition effects
+    initPageTransitions();
 });
+
+// Show loading state
+function showLoadingState() {
+    const resultsContainer = document.getElementById('scholarshipResults');
+    if (resultsContainer) {
+        resultsContainer.innerHTML = `
+            <div class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Finding scholarships that match your criteria...</p>
+            </div>
+        `;
+    }
+}
+
+// Hide loading state
+function hideLoadingState() {
+    const loadingContainer = document.querySelector('.loading-container');
+    if (loadingContainer) {
+        loadingContainer.style.opacity = '0';
+        setTimeout(() => {
+            loadingContainer.remove();
+        }, 300);
+    }
+}
+
+// Page transition effects
+function initPageTransitions() {
+    const main = document.querySelector('main');
+    if (main) {
+        main.style.opacity = '0';
+        main.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            main.style.transition = 'all 0.6s ease';
+            main.style.opacity = '1';
+            main.style.transform = 'translateY(0)';
+        }, 100);
+    }
+    
+    const aboutSections = document.querySelectorAll('.about-section');
+    aboutSections.forEach((section, index) => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+            section.style.transition = 'all 0.6s ease';
+            section.style.opacity = '1';
+            section.style.transform = 'translateY(0)';
+        }, 200 + (index * 150));
+    });
+}
 
 
 const scholarships = [
