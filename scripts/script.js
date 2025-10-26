@@ -103,6 +103,7 @@ const scholarships = [
         maxAge: 25,
         maxIncome: 75000,
         residency: "Resident",
+        category: "Any",
         description: "For students pursuing STEM fields with strong academic performance.",
         applyUrl: "https://www.stemscholarship.org/apply"
     },
@@ -114,6 +115,7 @@ const scholarships = [
         maxAge: 30,
         maxIncome: 60000,
         residency: "Resident",
+        category: "Any",
         description: "Supporting students in arts and humanities programs.",
         applyUrl: "https://www.artsfoundation.org/grants"
     },
@@ -125,6 +127,7 @@ const scholarships = [
         maxAge: 28,
         maxIncome: 80000,
         residency: "Non-Resident",
+        category: "Any",
         description: "For future business leaders with entrepreneurial spirit.",
         applyUrl: "https://www.scholarshipsfund.org/business-leaders-scholarship/"
     },
@@ -136,6 +139,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 70000,
         residency: "Resident",
+        category: "Any",
         description: "Supporting students committed to healthcare careers.",
         applyUrl: "https://www.scholarships.com/scholarships/the-procare-health-heroes-scholarship"
     },
@@ -147,6 +151,7 @@ const scholarships = [
         maxAge: 40,
         maxIncome: 50000,
         residency: "Resident",
+        category: "Any",
         description: "For students dedicated to making a difference in education.",
         applyUrl: "https://www.educationimpactfund.org/"
     },
@@ -158,6 +163,7 @@ const scholarships = [
         maxAge: 30,
         maxIncome: 90000,
         residency: "Non-Resident",
+        category: "Any",
         description: "Supporting international students in STEM programs.",
         applyUrl: "https://www.internationalscholarships.com/"
     },
@@ -169,6 +175,7 @@ const scholarships = [
         maxAge: 25,
         maxIncome: 45000,
         residency: "Resident",
+        category: "Any",
         description: "For students with strong community service backgrounds.",
         applyUrl: "https://www.scholarships.com/"
     },
@@ -180,6 +187,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
+        category: "Any",
         description: "Recognizing exceptional talent in technology and innovation.",
         applyUrl: "https://awards.gov.in/"
     },
@@ -191,6 +199,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 120000,
         residency: "Non-Resident",
+        category: "Any",
         description: "Prestigious U.S. government grant for Master's/PhD students from 155+ countries, covering all costs.",
         applyUrl: "https://foreign.fulbrightonline.org/"
     },
@@ -202,6 +211,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
+        category: "Any",
         description: "UK government's fully-funded scholarship for one-year Master's degrees, focusing on leadership potential.",
         applyUrl: "https://www.chevening.org/apply/"
     },
@@ -213,6 +223,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
+        category: "Any",
         description: "German government funding for Master's/PhD students, including a monthly stipend and health insurance.",
         applyUrl: "https://www.daad.de/en/"
     },
@@ -224,6 +235,7 @@ const scholarships = [
         maxAge: 35,
         maxIncome: 100000,
         residency: "Non-Resident",
+        category: "Any",
         description: "European Commission grant for a joint Master's degree across multiple European universities.",
         applyUrl: "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-degrees"
     },
@@ -233,8 +245,9 @@ const scholarships = [
         field: "STEM",
         minGPA: 7.0,
         maxAge: 35,
-        maxIncome:450000,
+        maxIncome: 450000,
         residency: "Resident",
+        category: "Any",
         description: "The scheme is a merit-cum-means scholarship scheme implemented by the Ministry of Education (Dept of Higher Education) to provide financial assistance to meritorious students from low-income families to help meet a part of their day-to-day expenses while pursuing higher studies (regular full-time courses)",
         applyUrl: "https://scholarships.gov.in"
     },
@@ -242,48 +255,49 @@ const scholarships = [
         name: "Post-Matric Scholarship Scheme for Minorities",
         amount: "10,000 p.a.",
         field: "STEM",
-        minGPA:5.0,
+        minGPA: 5.0,
         maxAge: "None",
         maxIncome: 200000,
         residency: "Resident",
+        category: "Minority",
         description: "A central sector scheme aimed at providing financial assistance to meritorious students from minority communities (economically weaker sections) so as to enhance their access to and continuation in higher education and improve employability.",
         applyUrl: "https://scholarships.gov.in"
     },
     {
         name: "National Fellowship and Scholarship for Higher Education of ST Students (NFST)",
-       amount: "31,000 to 35,000",
-       field:"STEM",
-       minGPA: 7,
-       maxAge: 36,
-       maxIncome:600000,
-       residency:"Resident",
-       description:"This is a Central Sector Scheme which merges two earlier schemes (Rajiv Gandhi National Fellowship and Top Class Education for ST Students) for ST students" ,
-       applyUrl:"https://fellowship.tribal.gov.in/"
+        amount: "31,000 to 35,000",
+        field: "STEM",
+        minGPA: 7,
+        maxAge: 36,
+        maxIncome: 600000,
+        residency: "Resident",
+        category: "ST",
+        description: "This is a Central Sector Scheme which merges two earlier schemes (Rajiv Gandhi National Fellowship and Top Class Education for ST Students) for ST students",
+        applyUrl: "https://fellowship.tribal.gov.in/"
     },
     {
         name: "INSPIRE Scholarship for Higher Education (SHE)",
-        amount:80000,
-        field:"STEM",
-        minGPA:7.0,
-        maxAge:22,
-        maxIncome:"None",
-        residency:" Resident",
-        description:"A scheme under the Ministry of Science & Technology / Department of Science & Technology (DST), Government of India, aiming to attract and retain talented students in the natural/basic sciences by providing them scholarship support, mentorship, summer research projects and exposure",
+        amount: 80000,
+        field: "STEM",
+        minGPA: 7.0,
+        maxAge: 22,
+        maxIncome: "None",
+        residency: "Resident",
+        category: "Any",
+        description: "A scheme under the Ministry of Science & Technology / Department of Science & Technology (DST), Government of India, aiming to attract and retain talented students in the natural/basic sciences by providing them scholarship support, mentorship, summer research projects and exposure",
         applyUrl: "https://www.online-inspire.gov.in"
     },
     {
-        name:"AICTE Pragati Scholarship (for girls) / AICTE Saksham Scholarship (for specially-abled)",
+        name: "AICTE Pragati Scholarship (for girls) / AICTE Saksham Scholarship (for specially-abled)",
         amount: 50000,
-        field:"STEM",
-        minGPA:"None",
+        field: "STEM",
+        minGPA: "None",
         maxIncome: 800000,
-        residency:"Resident",
-        description:"Pragati—Designed to support and encourage female students to pursue technical education (degree/diploma) in AICTE-approved institutions by providing financial assistance for tuition, books, computer, software, etc",
-        applyUrl:" https://www.aicte-pragati-saksham-gov.in/"
+        residency: "Resident",
+        category: "Any",
+        description: "Pragati—Designed to support and encourage female students to pursue technical education (degree/diploma) in AICTE-approved institutions by providing financial assistance for tuition, books, computer, software, etc",
+        applyUrl: " https://www.aicte-pragati-saksham-gov.in/"
     }
-
-
-
 ];
 
 
@@ -296,6 +310,7 @@ function handleScholarshipFilter(event) {
         income: parseInt(formData.get('income')),
         studyField: formData.get('studyField'),
         gpa: parseFloat(formData.get('gpa')),
+        caste: formData.get('caste'), 
         residency: formData.get('residency')
     };
 
@@ -310,36 +325,45 @@ function findMatchingScholarships(criteria) {
     return scholarships.filter(scholarship => {
         console.log('Checking scholarship:', scholarship.name);
 
-     
         if (criteria.age > scholarship.maxAge) {
             console.log(`Age ${criteria.age} > ${scholarship.maxAge} - REJECTED`);
             return false;
         }
 
-        
+       
         if (criteria.income > scholarship.maxIncome) {
             console.log(`Income ${criteria.income} > ${scholarship.maxIncome} - REJECTED`);
             return false;
         }
 
-        
         if (scholarship.field !== criteria.studyField) {
             console.log(`Field ${scholarship.field} !== ${criteria.studyField} - REJECTED`);
             return false;
         }
 
-       
+      
         if (criteria.gpa < scholarship.minGPA) {
             console.log(`GPA ${criteria.gpa} < ${scholarship.minGPA} - REJECTED`);
             return false;
         }
-
         
+       
         if (scholarship.residency !== criteria.residency) {
             console.log(`Residency ${scholarship.residency} !== ${criteria.residency} - REJECTED`);
             return false;
         }
 
+        
+        const userCaste = criteria.caste;
+        const scholarshipCaste = scholarship.category;
+
+        if (userCaste !== "Any" && scholarshipCaste !== "Any") {
+            if (userCaste !== scholarshipCaste) {
+                console.log(`Caste ${scholarshipCaste} (required) !== ${userCaste} (user) - REJECTED`);
+                return false;
+            }
+        }
+        
         console.log('✅ MATCHED:', scholarship.name);
         return true;
     });
@@ -366,7 +390,12 @@ function displayScholarshipResults(scholarships) {
             <p><strong>Field:</strong> ${scholarship.field}</p>
             <p><strong>Description:</strong> ${scholarship.description}</p>
             <div class="criteria">
-                <strong>Requirements:</strong> GPA ≥ ${scholarship.minGPA}, Age ≤ ${scholarship.maxAge}, Income ≤ $${scholarship.maxIncome.toLocaleString()}, ${scholarship.residency}
+                <strong>Requirements:</strong> 
+                GPA ≥ ${scholarship.minGPA || 'N/A'}, 
+                Age ≤ ${scholarship.maxAge || 'N/A'}, 
+                Income ≤ $${scholarship.maxIncome.toLocaleString() || 'N/A'}, 
+                ${scholarship.residency}, 
+                Category: ${scholarship.category} 
             </div>
             <div class="scholarship-actions">
                 <a href="${scholarship.applyUrl}" target="_blank" class="btn-apply-now">Apply Now</a>
